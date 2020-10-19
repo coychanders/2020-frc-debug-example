@@ -5,18 +5,27 @@ general:
   states:
 
     sequences:
-      priority_level_1: []
+      priority_level_1: [sq_eject_medium, sq_eject_high]
     parallels:
-       priority_level_1: []
-    ss_example:
       priority_level_2: []
-      priority_level_1: [st_example]
-      default: [st_example_default]
+      priority_level_1: [pl_protect, pl_intake, pl_prime_medium, pl_prime_high]
+    ss_arm:
+      priority_level_2: []
+      priority_level_1: [st_arm_extend, st_arm_retract]
+      default: []
+    ss_collector:
+      priority_level_2: []
+      priority_level_1: [st_collector_intake, st_collector_eject]
+      default: [st_collector_stop]
+    ss_elevator:
+      priority_level_2: []
+      priority_level_1: [st_elevator_low, st_elevator_medium, st_elevator_high]
+      default: []
 
 
-  subsystems: [ss_example]
+  subsystems: [ss_arm, ss_collector, ss_elevator]
 
-  input_booleans: [ipb_operator_right_trigger, ipb_operator_left_trigger]
+  input_booleans: [ipb_operator_left_trigger, ipb_operator_left_bumper, ipb_operator_right_trigger, ipb_operator_right_bumper, ipb_operator_x, ipb_operator_y, ipb_operator_a, ipb_operator_b, ipb_operator_dpad_down, ipb_operator_dpad_right, ipb_operator_dpad_up]
 
   input_numerics: []
 

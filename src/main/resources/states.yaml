@@ -1,20 +1,67 @@
 single_state:
 
-# ------ Example ------
+  # ------ Arm ------
 
-  st_example:
-    behavior: bh_example
+  st_arm_extend:
+    behavior: bh_arm
     behavior_config:
-      config_key: 1000
+      time_delay: 1001
 
-  st_example_default:
-    behavior: bh_example
+  st_arm_retract:
+    behavior: bh_arm
     behavior_config:
+      time_delay: 1002
+
+  # ------ Collector ------
+
+  st_collector_intake:
+    behavior: bh_collector
+    behavior_config:
+      time_delay: 1003
+
+  st_collector_eject:
+    behavior: bh_collector
+    behavior_config:
+      time_delay: 1004
+
+  st_collector_stop:
+    behavior: bh_collector
+    behavior_config:
+      time_delay: 1005
+
+  # ------ Elevator ------
+
+  st_elevator_low:
+    behavior: bh_elevator
+    behavior_config:
+      time_delay: 1006
+
+  st_elevator_medium:
+    behavior: bh_elevator
+    behavior_config:
+      time_delay: 1007
+
+  st_elevator_high:
+    behavior: bh_elevator
+    behavior_config:
+      time_delay: 1008
 
 
 done_for_time_state:
 
 parallel_state:
+  pl_protect:
+    foreground_states: [st_elevator_low, st_arm_retract]
+  pl_intake:
+    foreground_states: [st_elevator_low, st_arm_extend, st_collector_intake]
+  pl_prime_medium:
+    foreground_states: [st_elevator_medium, st_arm_extend]
+  pl_prime_high:
+    foreground_states: [st_elevator_high, st_arm_extend]
 
 sequencer_state:
+  sq_eject_medium:
+    sequence: [pl_prime_medium, st_collector_eject]
+  sq_eject_high:
+    sequence: [pl_prime_high, st_collector_eject]
 

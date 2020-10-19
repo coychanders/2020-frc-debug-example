@@ -12,6 +12,8 @@ import org.uacr.utilities.Config;
 import org.uacr.utilities.logging.LogManager;
 import org.uacr.utilities.logging.Logger;
 
+import java.util.stream.Collector;
+
 public class ModelFactory_Behaviors extends AbstractModelFactory {
 
 	private static final Logger sLogger = LogManager.getLogger(ModelFactory_Behaviors.class);
@@ -32,8 +34,12 @@ public class ModelFactory_Behaviors extends AbstractModelFactory {
 
 		switch (name) {
 
-			case "bh_example":
-				return new Behavior_Example(fSharedInputValues, fSharedOutputValues, config, fRobotConfiguration);
+			case "bh_arm":
+				return new Arm_States(fSharedInputValues, fSharedOutputValues, config, fRobotConfiguration);
+			case "bh_collector":
+				return new Collector_States(fSharedInputValues, fSharedOutputValues, config, fRobotConfiguration);
+			case "bh_elevator":
+				return new Elevator_States(fSharedInputValues, fSharedOutputValues, config, fRobotConfiguration);
 
 			// State not found
 			default:
