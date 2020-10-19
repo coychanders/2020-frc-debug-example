@@ -3,14 +3,18 @@ Used to teach debugging
 
 There are 3 subsystems - elevator, arm, collector
 Imagine an arm on an elevator with a collector on the end that can such an object in and eject it out.
-The elevator can be in one of three positions - low, medium and high
-The arm can either be retracted or extended
-The collector can either intake, eject or stop. Stop is the defualt state.
+The elevator can be in one of three states - low, medium and high
+The elevator will stay in a state until another state is requested
+The arm can be in one of two state - retracted or extended
+The arm will stay in a state until the other state is requested
+The collector can in one of three states - intake, eject or stop. Stop is the defualt state.
+The collector will stay in the intake or eject state for 1 second and then default to the stop state.
+
 To pick up a game piece, the elavator would be low, the arm extended, and collector intaking
 To place a game piece, the elevator would either be medium or high, the arem extended, and the collector ejecting
-There is also a protect mode where the arm is retracted, the elevator is low and the collector is stopped.
+There is also a protect state where the arm is retracted, the elevator is low and the collector is stopped.
 
-These are the Xbox buttons for each individual action.
+These are the Xbox buttons for each individual state, parallels and sequences.
 
 *** Elevator
 dpad_down is elevator low
