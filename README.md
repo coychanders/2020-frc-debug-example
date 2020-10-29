@@ -42,3 +42,18 @@ right bumper is eject high -> pl_prime_medium, st_collector_eject
   where:
    pl_prime_medium -> [st_elevator_medium, st_arm_extend]
    pl_prime_high -> [st_elevator_high, st_arm_extend]
+
+
+
+### Debugging Concepts
+
+* What's a debugger?
+* Breakpoints
+* Stack, stack frame
+* Step Over
+* Step Into
+* Force Step Into
+* Step Out
+* Drop Frame
+* Run to Cursor
+* Evaluate Expression
